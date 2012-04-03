@@ -5,9 +5,13 @@ requirejs.config({
     nodeRequire: require
 });
 
-requirejs(['user'], function (User) {
-    var user = new User({
-	name: "Tom"
-    });
-    console.log(user.get('name'));
+requirejs(['user'], function(User) {
+    exports.testUser = function(test){
+	var user = new User({
+	    name: "Tom"
+	});
+	test.expect(1);
+	test.equal(user.get('name'), 'Tom', 'should be Tom');
+	test.done();
+    };    
 });
