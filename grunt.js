@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+    
     grunt.initConfig({
 	test: {
 	    files: ['test/**/*.js']
@@ -13,7 +14,9 @@ module.exports = function(grunt) {
 	});
     });
     
-    grunt.registerTask('default', 'requirejs test');
+    grunt.registerTask('go', function() {
+	grunt.task.run(['requirejs', 'test']);
+    });
 
-    grunt.registerTask('go', 'requirejs test');
+    grunt.registerTask('default', 'go');
 };
